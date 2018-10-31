@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Inscription</title>
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.css" />
-    <script type="text/javascript" src="JQuery/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="JQuery/jquery-3.1.1.js"></script>
     <script type="text/javascript" src="JS/MesFonctions.js"></script>
 </head>
 <body>
