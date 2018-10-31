@@ -103,7 +103,6 @@
             $("#buttonoffre").click(boutonoffre);
             $("#connexion").click(boutonconnexion);
             $("#inscription").click(function() {window.location.assign('index.php/Index_inscription/index')});
-            $("#inscription").click(function() {window.location.assign('http://localhost/ingetis/PPE3/')});
             $("#deconnexion").click(function() {window.location.assign('index.php/indexAcceuilArthur/Deconnexion')});
             $("#Mon_profil").click(function() {window.location.assign('index.php/indexAcceuilArthur/profil')});
          });

@@ -122,7 +122,7 @@ function popupmodificationdemande(event)
 (
     {
         type:"get",
-        url:"/ingetis/PPE3-1/index.php/indexAcceuilArthur/PopUpDModification",
+        url:"/test/NEW-PPE3-master/index.php/indexAcceuilArthur/PopUpDModification",
         success:function(data)
         {
             $("#popDmodification").empty();
@@ -163,7 +163,7 @@ function popupmodificationoffre(event)
 (
     {
         type:"get",
-        url: "/ingetis/PPE3-1/index.php/indexAcceuilArthur/PopUpOModification",
+        url: "/test/NEW-PPE3-master/index.php/indexAcceuilArthur/PopUpOModification",
         success:function(data)
         {
             $("#popOmodification").empty();
@@ -206,7 +206,7 @@ function modifdemande(event) {
     var descDemande = $("#descriptiondemande")[0].value;
     $.ajax({
         type: "post",
-        url: "/ingetis/PPE3-1/index.php/indexAcceuilArthur/ModifDemande",
+        url: "/test/NEW-PPE3-master/index.php/indexAcceuilArthur/ModifDemande",
         data: {
             idService: typeDemande,
             descDemande: descDemande,
@@ -223,7 +223,7 @@ function modifoffre(event) {
     var descOffre = $("#descriptionoffre")[0].value;
     $.ajax({
         type: "post",
-        url: "/ingetis/PPE3-1/index.php/indexAcceuilArthur/ModifOffre",
+        url: "/test/NEW-PPE3-master/index.php/indexAcceuilArthur/ModifOffre",
         data: {
             idService: typeOffre,
             descOffre: descOffre,
@@ -241,7 +241,7 @@ function Ajoutinscription()
     (
         {
             type:"get",
-            url:"index.php/Index_Inscription/Ajoutinscription",
+            url:"/test/NEW-PPE3-master/index.php/Index_Inscription/Ajoutinscription",
             data:"nomUser="+$('#txtNom').val()+"&login="+$('#txtLogin').val()+"&mdp="+$('#txtMdp').val(),
             success:function(data)
             {
