@@ -8,7 +8,7 @@
         <script type="text/javascript" src="<?php echo base_url();?>JQuery/jquery-3.1.1.js"></script>
         <script type="text/javascript" src="<?php echo base_url();?>JQuery/jquery-ui.js"></script>
         <script type="text/javascript" src="<?php echo base_url();?>Bootstrap/js/bootstrap.bundle.js"></script>
-        <script src="<?php echo base_url();?>JS/mesFonctions.js"></script>    
+        <script src="<?php echo base_url();?>JS/MesFonctions.js"></script>    
     </head>
     <body>
     <header> 

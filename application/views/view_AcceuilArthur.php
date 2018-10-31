@@ -8,7 +8,7 @@
         <script type="text/javascript" src="JQuery/jquery-3.1.1.js"></script>
         <script type="text/javascript" src="JQuery/jquery-ui.js"></script>
         <script type="text/javascript" src="Bootstrap/js/bootstrap.bundle.js"></script>
-        <script src="JS/mesFonctions.js"></script>    
+        <script src="JS/MesFonctions.js"></script>    
     </head>
 <body>
     <header> 
@@ -33,7 +33,6 @@
                     
                     <div class="align">
                     <button type="button" class="btn btn-primary" id="inscription">Inscription</button>
-                    <div id="popinscription"></div>
                     </div>
                     <?php
                     }
@@ -103,6 +102,7 @@
             $("#buttondemande").click(boutondemande); 
             $("#buttonoffre").click(boutonoffre);
             $("#connexion").click(boutonconnexion);
+            $("#inscription").click(function() {window.location.assign('index.php/Index_inscription/index')});
             $("#inscription").click(function() {window.location.assign('http://localhost/ingetis/PPE3/')});
             $("#deconnexion").click(function() {window.location.assign('index.php/indexAcceuilArthur/Deconnexion')});
             $("#Mon_profil").click(function() {window.location.assign('index.php/indexAcceuilArthur/profil')});
