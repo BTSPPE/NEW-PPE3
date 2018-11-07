@@ -20,7 +20,7 @@
             foreach ($lesOptions as $uneOption)
             {
         ?>
-                <option name="nomOffre" value="<?php echo $idOffre[0]->maxId + 1?>" ><?php echo $uneOption->nomService ; ?>
+                <option name="nomOffre" value="<?php echo $uneOption->idService?>" ><?php echo $uneOption->nomService ; ?>
         <?php
             }
         ?>
