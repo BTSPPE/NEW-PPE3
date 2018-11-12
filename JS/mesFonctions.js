@@ -1,4 +1,4 @@
-function GetAllOffres()
+function GetAllOffres() // permet de récupérer les offres et de les afficher sur la page d'acceuil)
 {
 
 $.ajax
@@ -19,7 +19,7 @@ $.ajax
 );
 }
 
-function boutondemande()
+function boutondemande() //permet de récupérer le popup et de le faire afficher
 {
     $.ajax
 (
@@ -41,7 +41,7 @@ function boutondemande()
 
 }
 
-function boutonoffre()
+function boutonoffre() //permet de récupérer le popup et de le faire afficher
 {
     $.ajax
 (
@@ -63,7 +63,7 @@ function boutonoffre()
 
 }
 
-function boutonconnexion()
+function boutonconnexion() //permet de récupérer le popup et de le faire afficher
 {
     $.ajax
 (
@@ -84,7 +84,8 @@ function boutonconnexion()
 );
 }
 
-function ajoutDemande(event) {
+function ajoutDemande(event) //ajoute une demande dans la base de donnée avec les données du popup
+{
     var typeDemande = $("#selectdemande")[0].value;
     var descDemande = $("#descriptiondemande")[0].value;
     $.ajax({
@@ -100,7 +101,8 @@ function ajoutDemande(event) {
     })
 }
 
-    function ajoutoffre(event) {
+    function ajoutoffre(event) //ajoute une offre dans la base de donnée avec les données du popup
+    {
         var typeOffre = $("#selectoffre")[0].value;
         var descOffre = $("#descriptionoffre")[0].value;
         $.ajax({
@@ -116,19 +118,19 @@ function ajoutDemande(event) {
         })
 }
 
-function popupmodificationdemande(event)
+function popupmodificationdemande(event) //ouvre le popup de modification avec les infos de la demande sélectionnée
 {
     $.ajax
 (
     {
         type:"get",
-        url:"/test/NEW-PPE3-master/index.php/indexAcceuilArthur/PopUpDModification",
+        url:"index.php/indexAcceuilArthur/PopUpDModification",
         success:function(data)
         {
             $("#popDmodification").empty();
             $("#popDmodification").append(data);
             $("#titremodifdemande").modal();
-            var objs = event.target;
+            var objs = event.target; //demande selectionnée
             if(objs.nodeName === "P")
                 objs = objs.parentNode;
             var ObjetFiltrer = new Array();
@@ -157,20 +159,20 @@ function popupmodificationdemande(event)
 );
 }
 
-function popupmodificationoffre(event)
+function popupmodificationoffre(event)//ouvre le popup de modification avec les infos de l'offre sélectionnée
 {
     $.ajax
 (
     {
         type:"get",
-        url: "/test/NEW-PPE3-master/index.php/indexAcceuilArthur/PopUpOModification",
+        url: "index.php/indexAcceuilArthur/PopUpOModification",
         success:function(data)
         {
             $("#popOmodification").empty();
             $("#popOmodification").append(data);
             $("#popupoffre").modal();
-            var objs = event.target;
-            if(objs.nodeName === "P")
+            var objs = event.target; //offre selectionnée
+            if(objs.nodeName === "P")//si le nom de l'objet ciblé (dans son nodeName) est P alors on créé le tableau objetfiltrer
                 objs = objs.parentNode;
             var ObjetFiltrer = new Array();
             // var ObjetFiltrer = []; fait la même chose
@@ -201,12 +203,13 @@ function popupmodificationoffre(event)
 var idcliquerO;
 var idcliquerD;
 
-function modifdemande(event) {
+function modifdemande(event) //change la demande 
+{
     var typeDemande = $("#selectdemande")[0].value;
     var descDemande = $("#descriptiondemande")[0].value;
     $.ajax({
         type: "post",
-        url: "/test/NEW-PPE3-master/index.php/indexAcceuilArthur/ModifDemande",
+        url: "index.php/indexAcceuilArthur/ModifDemande",
         data: {
             idService: typeDemande,
             descDemande: descDemande,
@@ -218,12 +221,13 @@ function modifdemande(event) {
     })
 }
 
-function modifoffre(event) {
+function modifoffre(event) //change l'offre
+{
     var typeOffre = $("#selectoffre")[0].value;
     var descOffre = $("#descriptionoffre")[0].value;
     $.ajax({
         type: "post",
-        url: "/test/NEW-PPE3-master/index.php/indexAcceuilArthur/ModifOffre",
+        url: "index.php/indexAcceuilArthur/ModifOffre",
         data: {
             idService: typeOffre,
             descOffre: descOffre,
@@ -235,14 +239,14 @@ function modifoffre(event) {
     })
 }
 
-function Ajoutinscription()
+function Ajoutinscription() //inscript l'utilisateur dans la base de donnée.
 {
     $.ajax
     (
         {
             type:"get",
-            url:"/test/NEW-PPE3-master/index.php/Index_Inscription/Ajoutinscription",
-            data:"nomUser="+$('#txtNom').val()+"&login="+$('#txtLogin').val()+"&mdp="+$('#txtMdp').val(),
+            url:"index.php/Index_Inscription/Ajoutinscription",
+            data:"nomUser="+$('#txtNom').val()+"&login="+$('#txtLogin').val()+"&mdp="+$('#txtMdp').val(), //fait passer toutes les valeurs pour inscrire l'utilisateur
             success:function(data)
             {
                 alert("L'inscription a été prise en compte.");
@@ -251,7 +255,7 @@ function Ajoutinscription()
             error:function()
             {
                 alert("L'un des champs n'as pas été rempli.");
-            },
+            }
             
         }
     );
