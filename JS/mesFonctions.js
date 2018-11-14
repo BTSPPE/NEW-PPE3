@@ -124,7 +124,7 @@ function popupmodificationdemande(event) //ouvre le popup de modification avec l
 (
     {
         type:"get",
-        url:"index.php/indexAcceuilArthur/PopUpDModification",
+        url:"PopUpDModification",
         success:function(data)
         {
             $("#popDmodification").empty();
@@ -165,7 +165,7 @@ function popupmodificationoffre(event)//ouvre le popup de modification avec les 
 (
     {
         type:"get",
-        url: "index.php/indexAcceuilArthur/PopUpOModification",
+        url: "PopUpOModification",
         success:function(data)
         {
             $("#popOmodification").empty();
@@ -209,7 +209,7 @@ function modifdemande(event) //change la demande
     var descDemande = $("#descriptiondemande")[0].value;
     $.ajax({
         type: "post",
-        url: "index.php/indexAcceuilArthur/ModifDemande",
+        url: "ModifDemande",
         data: {
             idService: typeDemande,
             descDemande: descDemande,
@@ -227,7 +227,7 @@ function modifoffre(event) //change l'offre
     var descOffre = $("#descriptionoffre")[0].value;
     $.ajax({
         type: "post",
-        url: "index.php/indexAcceuilArthur/ModifOffre",
+        url: "ModifOffre",
         data: {
             idService: typeOffre,
             descOffre: descOffre,
@@ -245,7 +245,7 @@ function Ajoutinscription() //inscript l'utilisateur dans la base de donnée.
     (
         {
             type:"get",
-            url:"index.php/Index_Inscription/Ajoutinscription",
+            url:"Ajoutinscription",
             data:"nomUser="+$('#txtNom').val()+"&login="+$('#txtLogin').val()+"&mdp="+$('#txtMdp').val(), //fait passer toutes les valeurs pour inscrire l'utilisateur
             success:function(data)
             {
