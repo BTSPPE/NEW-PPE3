@@ -10,5 +10,3 @@ class Model_ModifDemande extends CI_Model
     }
 }
 ?>
-<!-- descriptionDemande, dateDemande, idService, idUser
-VALUES ("'.$_POST["descDemande"].'", NOW(), '.$_POST["idService"].', '.$this->session->idUser.') -->

@@ -5,7 +5,7 @@ class Model_AjoutDemande extends CI_Model
     {
         $sql = $this->db->query('INSERT INTO demande (descriptionDemande, dateDemande, idService, idUser)
                                  VALUES ("'.$_POST["descDemande"].'", NOW(), '.$_POST["idService"].', '.$this->session->idUser.')');
-        //return $sql->result();
+        //ajoute la demande dans la base de donnée
     }
 }
 ?>

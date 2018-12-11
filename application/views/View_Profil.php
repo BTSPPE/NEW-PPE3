@@ -8,7 +8,7 @@
         <script type="text/javascript" src="<?php echo base_url();?>JQuery/jquery-3.1.1.js"></script>
         <script type="text/javascript" src="<?php echo base_url();?>JQuery/jquery-ui.js"></script>
         <script type="text/javascript" src="<?php echo base_url();?>Bootstrap/js/bootstrap.bundle.js"></script>
-        <script src="<?php echo base_url();?>JS/MesFonctions.js"></script>    
+        <script src="<?php echo base_url();?>JS/mesFonctions.js"></script>    
     </head>
     <body>
     <header> 
@@ -73,12 +73,16 @@
         ?>
     </div>
     <div id=popOmodification></div>
-    <h3>Mes Deals</h3>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <h3>Mes Deals</h3><br>
+        <p>Fond blanc = deal en cours / Fond vert = deal terminé</p>
+        <div id='deal'>
+        </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </main>
      <script>
         $(document).ready(function() {
-            $("#deconnexion").click(function() {window.location.assign('Deconnexion')});
+            GetAllDeals();
+            $("#deconnexion").click(function() {window.location.replace('Deconnexion')});
             $("#Acceuil").click(function() {window.location.assign('<?php echo base_url();?>index.php')});
             var boites = $(".boiteOffre")
             var i = 0;

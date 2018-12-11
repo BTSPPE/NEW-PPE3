@@ -13,7 +13,7 @@
 <body>
     <header> 
         <nav>
-            <div id="bandeau">
+            <div id="bandeau" class="nav">
                     <div class="align">
                         <a href="view_AcceuilArthur.php">Acceuil</a>
                     </div>
@@ -52,11 +52,13 @@
     <br><br><br><br><br><br>
     
     <main>
-        <h3>Les demandes du moment</h3>
+        <h3>Les demandes du moment</h3><br>
+        
         <?php
         if ($this->session->isLogged==true)
         {
-        echo "<button type='button' class='btn btn-primary' id='buttondemande'>
+        echo "<button type='button' class='btn btn-primary createdeal'>Créer un échange</button>
+            <button type='button' class='btn btn-primary' id='buttondemande'>
             Ajouter une demande
             </button>
             <div id='ajoutdemande'>
@@ -75,10 +77,12 @@
         </div>    
         <br><br><br><br>
         <h3>Les offres du moment</h3>
+        
         <?php
         if ($this->session->isLogged==true)
         {
-        echo "<button type='button' class='btn btn-primary' id='buttonoffre'>
+        echo "<button type='button' class='btn btn-primary createdeal'>Créer un échange</button>
+            <button type='button' class='btn btn-primary' id='buttonoffre'>
             Ajoutez une offre
             </button>
             <div id='ajoutoffre'>
@@ -103,8 +107,10 @@
             $("#buttonoffre").click(boutonoffre);
             $("#connexion").click(boutonconnexion);
             $("#inscription").click(function() {window.location.assign('index.php/Index_inscription/index')});
-            $("#deconnexion").click(function() {window.location.assign('index.php/indexAcceuilArthur/Deconnexion')});
+            $("#deconnexion").click(function() {window.location.replace('index.php/indexAcceuilArthur/Deconnexion')});
             $("#Mon_profil").click(function() {window.location.assign('index.php/indexAcceuilArthur/profil')});
+            $(".createdeal").click(function() {window.location.assign('index.php/indexAcceuilArthur/CreateDeal')});
          });
     </script>
     </body>
+</html>

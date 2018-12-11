@@ -108,6 +108,67 @@
         $this->load->model("Model_ModifOffre");
         $data['lesModifs']=$this->Model_ModifOffre->ModifierOffre();//modifie l'offre de l'utilisateur
     }
-}
 
-?>
+    public function GetAllDeals(){
+        $this->load->library("session");
+        $this->load->model("Model_Deal");//affiche les deals de l'utilisateur connecté
+        $data['lesDealsCrea']=$this->Model_Deal->GetAllDealsCreateur(); // récupère les deals en cours pour la page de profil
+        $data['lesDeals']=$this->Model_Deal->GetAllDeals(); // récupère les deals en cours pour la page de profil
+        $this->load->view("View_Deals", $data); //page de profil
+    }
+
+    public function CreateDeal(){ //envoie sur la page de recherche pour créer un deal
+        $this->load->library("session");
+        $this->load->model("Model_Service");
+        $data['lesServices']=$this->Model_Service->GetAllServices();
+        $this->load->view("View_Create_Deal", $data);
+    }
+
+    public function RechercheOffre(){ //affiche les offres selon la recherche
+        $idService=$_GET['idService'];
+        $this->load->library("session");
+        $this->load->model("Model_Recherche");
+        $data['lesRecherchesOffres'] = $this->Model_Recherche->GetAllOffresbyidService($idService);
+        $this->load->view('View_Offre_Recherche', $data);
+    }
+
+    public function RechercheDemande(){ //affiche les demandes selon la recherche
+        $idService=$_GET['idService'];
+        $this->load->library("session");
+        $this->load->model("Model_Recherche");
+        $data['lesRecherchesDemandes'] = $this->Model_Recherche->GetAllDemandesbyidService($idService);
+        $this->load->view('View_Demande_Recherche', $data);
+    }
+
+    public function PopUpDealOffre(){
+        $this->load->library("session");
+        $this->load->model("Model_DealOffre");//récupère les infos des offres et demandes des deux utilisateurs
+        $data['offreVoulu'] = $this->Model_DealOffre->GetOffreVoulu();
+        $data['maDemande'] = $this->Model_DealOffre->GetMaDemande();
+        $data['listeMesOffres'] = $this->Model_DealOffre->GetListeMesOffres();
+        $data['listeSesDemandes'] = $this->Model_DealOffre->GetListeSesDemandes();
+        $this->load->view('View_PopUpDealOffre', $data);
+    }
+
+    public function PopUpDealDemande(){
+        $this->load->library("session");
+        $this->load->model("Model_DealDemande");//récupère les infos des et demandes des deux utilisateurs
+        $data['demandeVoulu'] = $this->Model_DealDemande->GetDemandeVoulu();
+        $data['monOffre'] = $this->Model_DealDemande->GetMonOffre();
+        $data['listeMesDemandes'] = $this->Model_DealDemande->GetListeMesDemandes();
+        $data['listeSesOffres'] = $this->Model_DealDemande->GetListeSesOffres();
+        $this->load->view('View_PopUpDealDemande', $data);
+    }
+
+    public function creationDeal(){//avec les infos récupérés envoie le tout sur la base de données
+        $this->load->library("session");
+        $this->load->model("Model_CreationDeal");
+        $this->Model_CreationDeal->NewDeal();//créer le nouveau dans la base de données
+    }
+
+    public function NoteDeal(){//envoie la note sur la base données
+        $this->load->library("session");
+        $this->load->model("Model_NoteDeal");
+        $this->Model_NoteDeal->NoteDeal();
+    }
+}?>

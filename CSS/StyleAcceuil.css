@@ -10,7 +10,7 @@
     flex: auto;
 }
 
-#demandes ,#offres {
+#demandes, #offres, #deal, .flex {
     display:flex;
     flex-flow:row wrap;
     justify-content: center;
@@ -34,9 +34,23 @@ main{
     text-align: center;
 }
 
-.boiteOffre, .boiteDemande{
+.boiteOffre, .boiteDemande, .boiteDeals{
     border : solid;
     background-color: white;
     width: 18%;
+    margin: 5px;
+}
+
+.boiteDeals{
+    border : solid;
+    background-color: white;
+    width: 25%;
+    margin: 5px;
+}
+
+.boiteDealsValide{
+    border : solid;
+    background-color: green;
+    width: 25%;
     margin: 5px;
 }

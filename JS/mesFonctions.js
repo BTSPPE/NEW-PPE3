@@ -96,26 +96,32 @@ function ajoutDemande(event) //ajoute une demande dans la base de donnée avec l
             descDemande: descDemande
         },
         success:function(alertdemande){
-            alert("Succès de l'ajout de votre demande");
+            location.reload();
+        },
+        error:function(){
+            alert("erreur sur l'ajout de demande");
         }
     })
 }
 
-    function ajoutoffre(event) //ajoute une offre dans la base de donnée avec les données du popup
-    {
-        var typeOffre = $("#selectoffre")[0].value;
-        var descOffre = $("#descriptionoffre")[0].value;
-        $.ajax({
-            type: "post",
-            url: "index.php/indexAcceuilArthur/AjoutOffre",
-            data: {
-                idService: typeOffre,
+function ajoutoffre(event) //ajoute une offre dans la base de donnée avec les données du popup
+{
+    var typeOffre = $("#selectoffre")[0].value;
+    var descOffre = $("#descriptionoffre")[0].value;
+    $.ajax({
+        type: "post",
+        url: "index.php/indexAcceuilArthur/AjoutOffre",
+        data: {
+            idService: typeOffre,
                 descOffre: descOffre
-            },
-            success:function(alertoffre){
-                alert("Succès de l'ajout de votre offre");
-            }
-        })
+        },
+        success:function(alertoffre){
+            location.reload();
+        },
+        error:function(){
+            alert("Erreur sur l'ajout d'offre");
+        }
+    })
 }
 
 function popupmodificationdemande(event) //ouvre le popup de modification avec les infos de la demande sélectionnée
@@ -131,15 +137,15 @@ function popupmodificationdemande(event) //ouvre le popup de modification avec l
             $("#popDmodification").append(data);
             $("#titremodifdemande").modal();
             var objs = event.target; //demande selectionnée
-            if(objs.nodeName === "P")
+            if(objs.nodeName === "P")//si clique sur un élément de la boite ça renvoie à la boite, parent de cet élément
                 objs = objs.parentNode;
             var ObjetFiltrer = new Array();
             // var ObjetFiltrer = []; fait la même chose
             objs.childNodes.forEach(function(voulu){
-                if (voulu.nodeName === "P")
+                if (voulu.nodeName === "P")//filtrage des P qui contiennent les informations
                     ObjetFiltrer.push(voulu.innerHTML);
             })
-            $("#descriptiondemande").val(ObjetFiltrer[1]);
+            $("#descriptiondemande").val(ObjetFiltrer[1]);//remplissage du popup par les infos filtré
             var index = -1;
             $("option").filter(function(i, element) {
                 if (element.innerHTML.trim() === ObjetFiltrer[0]) {
@@ -177,10 +183,10 @@ function popupmodificationoffre(event)//ouvre le popup de modification avec les 
             var ObjetFiltrer = new Array();
             // var ObjetFiltrer = []; fait la même chose
             objs.childNodes.forEach(function(voulu){
-                if (voulu.nodeName === "P")
+                if (voulu.nodeName === "P")//filtrage des P qui contiennent les informations
                     ObjetFiltrer.push(voulu.innerHTML);
             })
-            $("#descriptionoffre").val(ObjetFiltrer[1]);
+            $("#descriptionoffre").val(ObjetFiltrer[1]);//remplissage du popup par les infos filtré
             var index = -1;
             $("option").filter(function(i, element) {
                 if (element.innerHTML.trim() === ObjetFiltrer[0]) {
@@ -216,7 +222,10 @@ function modifdemande(event) //change la demande
             idDemande: idcliquerD
         },
         success:function(alertdemande){
-            alert("Succès de la modification");
+            location.reload();
+        },
+        error:function(){
+            alert("Erreur sur la modification de la demande");
         }
     })
 }
@@ -234,7 +243,10 @@ function modifoffre(event) //change l'offre
             idOffre: idcliquerO
         },
         success:function(alertoffre){
-            alert("Succès de la modification");
+            location.reload();
+        },
+        error:function(){
+            alert("Erreur sur la modification de l'offre");
         }
     })
 }
@@ -259,4 +271,200 @@ function Ajoutinscription() //inscript l'utilisateur dans la base de donnée.
             
         }
     );
+}
+
+function GetAllDeals() // permet de récupérer les échanges de l'utilisateur
+{
+
+    $.ajax
+    (
+        {
+            type:"get",
+            url:"GetAllDeals",
+            success:function(data)
+            {
+                $("#deal").empty();
+                $("#deal").append(data);
+            },
+            error:function()
+            {
+                alert("Ereur d'affichage sur les deals");
+            }
+        }
+    );
+}
+
+function Recherche(idService)
+{
+    $.ajax(
+    {
+        type:"get",
+        url:"RechercheOffre",
+        data:"idService="+idService,
+        success:function(data)
+        {
+            $('#divoffre').empty();
+            $('#divoffre').append(data);
+            
+        },
+        error:function()
+        {
+            alert('Erreur SQL');
+        }
+    }
+    );
+
+    $.ajax({
+        type:"get",
+        url:"RechercheDemande",
+        data:"idService="+idService,
+        success:function(data)
+        {
+            $('#divdemande').empty();
+            $('#divdemande').append(data);
+            
+        },
+        error:function()
+        {
+            alert('Erreur SQL');
+        }
+    });
+}
+function popupDealOffre(event){//récupère l'id du créateur de l'offre sélectionnée pour l'envoyer dans le model afin d'afficher le popup contenant l'offre et les demandes du créateur
+    var idCreateur = event.target.attributes.idCreateur.nodeValue;
+    var idOffre = event.target.attributes.idOffre.nodeValue;
+    var idService = event.target.attributes.idService.nodeValue;
+    $.ajax(
+        {
+            type:"get",
+            url:"PopUpDealOffre",
+            data:{
+                idUser: idCreateur,
+                idOffre: idOffre,
+                idService: idService
+            },
+            success:function(data)
+            {
+                $("#popdealoffre").empty();
+                $("#popdealoffre").append(data);
+                $("#popupdealoffre").modal(); 
+            },
+            error:function()
+            {
+                alert('erreur')
+            }
+        }
+    );
+}
+
+function popupDealDemande(event){//récupère l'id du créateur de la demande sélectionnée pour l'envoyer dans le model afin d'afficher le popup contenant la demande et les offres du créateur
+    var idCreateur = event.target.attributes.idCreateur.nodeValue;
+    var idDemande = event.target.attributes.idDemande.nodeValue;
+    var idService = event.target.attributes.idService.nodeValue;
+    $.ajax(
+        {
+            type:"get",
+            url:"PopUpDealDemande",
+            data:{
+                idUser: idCreateur,
+                idDemande: idDemande,
+                idService: idService
+            },
+            success:function(data)
+            {
+                $("#popdealdemande").empty();
+                $("#popdealdemande").append(data);
+                $("#popupdealdemande").modal();
+            },
+            error:function()
+            {
+                alert('erreur')
+            }
+        }
+    );
+}
+var idOffre=-1;
+
+function setidOffrepOffre(event){//garde en mémoire l'id de l'offre pour le deal
+    idOffre = event.target.attributes.offreUser1.nodeValue;
+    console.log(event.target.attributes.offreUser1.nodeValue);
+}
+
+function setidOffrepDemande(event){//garde en mémoire l'id de l'offre pour le deal
+    idOffre = event.target.attributes.offreUser2.nodeValue;
+    console.log(event.target.attributes.offreUser2.nodeValue);
+}
+
+function creationDealOffre(event){
+    if(idOffre!=-1){//vérifie si l'offre et a bien été sélectionnées
+        var boiteOffre=$("#offreVoulu")[0];
+        var offreUser2 = boiteOffre.attributes.idoffre.nodeValue;
+    
+        $.ajax({
+            type:"get",
+            url:'creationDeal',
+            data:{
+                idOffre1: idOffre,
+                idOffre2: offreUser2,
+            },
+            success:function(){
+                alert("Votre deal à été pris en compte. Vous pouvez le voir sur votre page de profil");
+            },
+            error:function(){
+                alert("Erreur sur la création du Deal")
+            },
+    
+        });
+    }
+    else{
+        alert("Veuillez sélectionner les offres et demandes concernés");
+    }
+}
+
+function creationDealDemande(event){
+    if(idOffre!=-1 ){//vérifie si l'offre a bien été sélectionnées
+        var boiteOffre=$("#Monoffre")[0];
+        var offreUser1 = Monoffre.attributes.offreUser1.nodeValue;
+    
+        $.ajax({
+            type:"get",
+            url:"creationDeal",
+            data:{
+                idOffre1: offreUser1,
+                idOffre2: idOffre,
+            },
+            success:function(){
+                alert("Votre deal à été pris en compte. Vous pouvez le voir sur votre page de profil");
+            },
+            error:function(){
+                alert("Erreur sur la création du Deal")
+            },
+    
+        });
+    }
+    else{
+        alert("Veuillez sélectionner les offres et demandes concernés");
+    }
+}
+
+function NoteDeal(event){
+    var note = event.target.value;
+    var idDeal = event.target.parentNode.parentNode.attributes.iddeal.nodeValue;
+    var idCreateur = event.target.parentNode.parentNode.attributes.idCreateur.nodeValue;
+    $.ajax({
+        type:"post",
+        url:"NoteDeal",
+        data:{
+            "note": note,
+            "idDeal": idDeal,
+            "idCreateur": idCreateur,
+        },
+    success:function(){
+        alert("La note à été prise en compte");
+        location.reload();
+    },
+    error:function(){
+        alert("Erreur sur la note");
+    },
+    });
 }

@@ -5,7 +5,7 @@ class Model_Connexion extends CI_Model
     {
         $sql = $this->db->query('SELECT mdp FROM user
                                 WHERE login ="'.$_POST["login"].'"');
-        if (count($sql->result())!=0 && $sql->result()[0]->mdp == $_POST["mdp"]) {
+        if (count($sql->result())!=0 && $sql->result()[0]->mdp == $_POST["mdp"]) { //vérifie si le mot de passe est bon ainsi que le login 
             $this->session->isLogged = true;
             $this->session->username = $_POST["login"];
         $sql = $this->db->query('SELECT nomUser, photoUser, idUser
@@ -20,5 +20,5 @@ class Model_Connexion extends CI_Model
             $this->session->isLogged = false;
     }
 }
-
+//connecte à la base de donnée
 ?>
