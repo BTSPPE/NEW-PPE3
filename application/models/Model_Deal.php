@@ -27,7 +27,7 @@ class Model_Deal extends CI_Model
 
     public function GetAllDeals()
     {
-         $sql3 = $this->db->query('SELECT deal.idCreateur, deal.idDeal, deal.dateDeal,deal.noteUser1, deal.noteUser2, deal.idCreateur, user.idUser, user.nomUser, user.photoUser, service.nomService
+         $sql3 = $this->db->query('SELECT deal.idEtat, deal.idCreateur, deal.idDeal, deal.dateDeal,deal.noteUser1, deal.noteUser2, deal.idCreateur, user.idUser, user.nomUser, user.photoUser, service.nomService
                                  FROM deal
                                  INNER JOIN offre
                                     ON offre.idOffre = deal.idOffreUser2
@@ -37,7 +37,7 @@ class Model_Deal extends CI_Model
                                     ON service.idService = offre.idService
                                  WHERE deal.idCreateur ='.$this->session->idUser.'');
          
-         $sql4 = $this->db->query('SELECT deal.idCreateur, deal.idDeal, deal.dateDeal,deal.noteUser1, deal.noteUser2, deal.idCreateur, user.idUser, user.nomUser, user.photoUser, service.nomService
+         $sql4 = $this->db->query('SELECT deal.idEtat, deal.idCreateur, deal.idDeal, deal.dateDeal,deal.noteUser1, deal.noteUser2, deal.idCreateur, user.idUser, user.nomUser, user.photoUser, service.nomService
                                  FROM deal
                                  INNER JOIN offre
                                     ON offre.idOffre = deal.idOffreUser1
