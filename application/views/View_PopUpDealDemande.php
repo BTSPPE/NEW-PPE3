@@ -14,14 +14,14 @@
             echo "Ce que vous souhaitez";
             foreach($demandeVoulu as $uneDemande){
               echo "<div class='flex'>";
-              echo  "<div class='boitedeal'>".$uneDemande->nomService .'<br>'. $uneDemande->descriptionDemande.'<br>'. $uneDemande->dateDemande.'</div><br><br>';
+              echo  "<div class='boiteDeals'>".$uneDemande->nomService .'<br>'. $uneDemande->descriptionDemande.'<br>'. $uneDemande->dateDemande.'</div><br><br>';
             }
             echo "</div>";
             if(count($monOffre)!=0){
               echo "Contre ce que ce vous proposez";
               echo "<div class='flex'>";
               foreach($monOffre as $lOffre){
-                echo "<div offreUser1=".$lOffre->idOffre." id='Monoffre' class='boitedeal'>".$lOffre->nomService.'<br>'.$lOffre->descriptionOffre.'<br>'.$lOffre->dateOffre."</div><br>";
+                echo "<div offreUser1=".$lOffre->idOffre." id='Monoffre' class='boiteDeals'>".$lOffre->nomService.'<br>'.$lOffre->descriptionOffre.'<br>'.$lOffre->dateOffre."</div><br>";
               }
               echo "</div>";
             }
@@ -37,14 +37,14 @@
                 echo "Vos demandes actuelles <br>";
                 echo "<div class='flex'>";
                 foreach($listeMesDemandes as $uneChose){
-                  echo "<div value=".$uneChose->idService." class='boitedeal'>".$uneChose->nomService.'<br>'.$uneChose->descriptionDemande.'<br>'.$uneChose->dateDemande."</div><br><br>";
+                  echo "<div value=".$uneChose->idService." class='boiteDeals'>".$uneChose->nomService.'<br>'.$uneChose->descriptionDemande.'<br>'.$uneChose->dateDemande."</div><br><br>";
                 }
                 echo "</div>";
                 echo "Ses offres actuelles <br>";
                 echo "Cliquez sur une offre pour la sélectionner";
                 echo "<div class='flex'>";
                 foreach($listeSesOffres as $unTruc){
-                  echo "<div offreUser2=".$unTruc->idOffre." value=".$unTruc->idService." class='boitedeal sesOffres' >".$unTruc->nomService.'<br>'.$unTruc->descriptionOffre.'<br>'.$unTruc->dateOffre.'</div><br><br>';
+                  echo "<div class='boiteDeals sesOffres' offreUser2=".$unTruc->idOffre." value=".$unTruc->idService.">".$unTruc->nomService.'<br>'.$unTruc->descriptionOffre.'<br>'.$unTruc->dateOffre.'</div><br><br>';
                 }
                 echo "</div>";
               }
