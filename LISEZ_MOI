@@ -1,0 +1,12 @@
+Voici le projet PPE3 du BTS SIO d'Ingetis
+
+Pour faire fonctionner le projet correctement, il faut configurer quelque paramètres du projet :
+
+- Avoir installer le logiciel XAMPP (Lien de téléchargement: https://www.apachefriends.org/fr/index.html)
+
+- Installer sur 
+
+- Déposer le PPE3 dans : C:/xampp/htdocs
+
+- Dans le dossier Config > config.php > ligne 26 : changer 'test/NEW-PPE3-master/' 
+par l'emplacement que vous avez choisi ('[nom Dossier]/NEW-PPE3-master/')
