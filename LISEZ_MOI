@@ -1,12 +1,13 @@
 Voici le projet PPE3 du BTS SIO d'Ingetis
 
-Pour faire fonctionner le projet correctement, il faut configurer quelque paramètres du projet :
+Pour faire fonctionner le projet correctement, il faut configurer quelques paramètres du projet :
 
 - Avoir installer le logiciel XAMPP (Lien de téléchargement: https://www.apachefriends.org/fr/index.html)
 
-- Installer sur 
+- Installer sur phpMyAdmin la base de donnée du projet (trocdetemps.sql qui est dans la racine du GitHub)
 
 - Déposer le PPE3 dans : C:/xampp/htdocs
 
-- Dans le dossier Config > config.php > ligne 26 : changer 'test/NEW-PPE3-master/' 
-par l'emplacement que vous avez choisi ('[nom Dossier]/NEW-PPE3-master/')
+- Dans le dossier Config > config.php > ligne 26 
+($config['base_url'] = 'http://localhost/test/NEW-PPE3-master/';)
+: changer 'test/NEW-PPE3-master/' par l'emplacement que vous avez choisi ('[nom Dossier]/NEW-PPE3-master/')
