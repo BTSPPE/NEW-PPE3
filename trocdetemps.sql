@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mar. 21 mai 2019 à 10:12
--- Version du serveur :  10.1.36-MariaDB
--- Version de PHP :  7.2.10
+-- Généré le :  mar. 11 sep. 2018 à 23:06
+-- Version du serveur :  10.1.25-MariaDB
+-- Version de PHP :  7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -74,8 +74,7 @@ INSERT INTO `deal` (`idDeal`, `dateDeal`, `noteUser1`, `noteUser2`, `idOffreUser
 (3, '2018-06-30', 2, 6, 6, 8, 2, 2),
 (4, '2018-08-17', 7, 3, 8, 6, 1, 1),
 (5, '2018-08-31', 9, 8, 2, 5, 2, 5),
-(6, '2018-09-11', 0, 0, 5, 2, 1, 2),
-(7, '2018-11-14', 0, 0, 5, 3, 1, 3);
+(6, '2018-09-11', 0, 0, 5, 2, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -308,43 +307,36 @@ ALTER TABLE `user`
 --
 ALTER TABLE `categorie`
   MODIFY `idCateg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT pour la table `deal`
 --
 ALTER TABLE `deal`
-  MODIFY `idDeal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
+  MODIFY `idDeal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `demande`
 --
 ALTER TABLE `demande`
   MODIFY `idDemande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
 --
 -- AUTO_INCREMENT pour la table `etat`
 --
 ALTER TABLE `etat`
   MODIFY `idEtat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT pour la table `offre`
 --
 ALTER TABLE `offre`
   MODIFY `idOffre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
 --
 -- AUTO_INCREMENT pour la table `service`
 --
 ALTER TABLE `service`
   MODIFY `idService` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
   MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- Contraintes pour les tables déchargées
 --
